@@ -1,27 +1,36 @@
 {{>layouts/header}}
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#article}}
-    <tr>
-        <th>{{id}}</th>
-        <td>{{title}}</td>
-        <td>{{content}}</td>
-    </tr>
-    {{/article}}
-    </tbody>
-</table>
+<style>
+    .custom-card {
+        padding: 20px;
+        border: 1px solid #e0e0e0; /* 회색 구분선 색상 */
+    }
 
-<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
-<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
-<a href="/articles">Go to Article List</a>
+    .card-title {
+        font-size: 1.5rem; /* 제목 글씨 크기 조절 */
+        font-weight: bold; /* 볼드 처리 */
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Article Details</h2>
+
+    {{#article}}
+        <div class="card mb-4 custom-card">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <hr class="my-3"> <!-- 회색 구분선 -->
+                <p class="card-text">{{content}}</p>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <a href="/articles/{{article.id}}/edit" class="btn btn-primary mr-2">Edit</a>
+            <a href="/articles/{{article.id}}/delete" class="btn btn-danger mr-2">Delete</a>
+            <a href="/articles" class="btn btn-secondary">Go to Article List</a>
+        </div>
+    {{/article}}
+</div>
 
 {{>comments/_comments}}
 

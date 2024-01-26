@@ -82,7 +82,7 @@ public class ArticleController {
         // 2. 모델에 데이터 등록하기
         model.addAttribute("article", articleEntity);
 
-        return "article/edit.mustache";
+        return "article/edit";
     }
 
     @PostMapping("articles/update")
